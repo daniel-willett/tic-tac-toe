@@ -45,26 +45,26 @@ def hasWon():
     #0 in binary is 00
     #So we can take bitwise logical comparisons
     def northEast(x,y):
-        if x>len(grid[0])-1-3:
+        if x>len(grid[0])-3:
             return 0
         if y<3-1:
             return 0
         return grid[y][x] & grid[y-1][x+1] & grid[y-2][x+2]
 
     def east(x,y):
-        if x>len(grid[0])-1-3:
+        if x>len(grid[0])-3:
             return 0
         return grid[y][x] & grid[y][x+1] & grid[y][x+2]
 
     def southEast(x,y):
-        if x>len(grid[0])-1-3:
+        if x>len(grid[0])-3:
             return 0
-        if y>len(grid)-1-3:
+        if y>len(grid)-3:
             return 0
         return grid[y][x] & grid[y+1][x+1] & grid[y+2][x+2]
 
     def south(x,y):
-        if y>len(grid)-1-3:
+        if y>len(grid)-3:
             return 0
         return grid[y][x] & grid[y+1][x] & grid[y+2][x]
 
@@ -90,7 +90,6 @@ grid = []
 gameOver = False
 player = 1
 
-
 setup()
 while gameOver==False:
     display()
@@ -103,6 +102,7 @@ while gameOver==False:
         makeMove(position)
         if hasWon()==True:
             gameOver=True
-            print("Player "+player+" has won!")
+            print("Player "+str(player)+" has won!")
+            display()
         player = (player%2)+1 #Switch between (0,1) but scaled by 1 so switch between (1,2)
 
