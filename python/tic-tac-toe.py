@@ -40,6 +40,43 @@ def makeMove(position):
 
 def hasWon():
     #Use an idea like in https://github.com/daniel-willett/project-euler/blob/main/python/q11.py
+    #2 in binary is 10
+    #1 in binary is 01
+    #0 in binary is 00
+    #So we can take bitwise logical comparisons
+    def northEast(x,y):
+        if x>len(grid[0])-1-3:
+            return 0
+        if y<3-1:
+            return 0
+        return grid[y][x] & grid[y-1][x+1] & grid[y-2][x+2]
+
+    def east(x,y):
+        if x>len(grid[0])-1-3:
+            return 0
+        return grid[y][x] & grid[y][x+1] & grid[y][x+2]
+
+    def southEast(x,y):
+        if x>len(grid[0])-1-3:
+            return 0
+        if y>len(grid)-1-3:
+            return 0
+        return grid[y][x] & grid[y+1][x+1] & grid[y+2][x+2]
+
+    def south(x,y):
+        if y>len(grid)-1-3:
+            return 0
+        return grid[y][x] & grid[y+1][x] & grid[y+2][x]
+
+    #Go through the whole playing field
+    for i in range(3):
+        for j in range(3):
+            if northEast(i,j)!=0 or east(i,j)!=0 or southEast(i,j)!=0 or south(i,j)!=0:
+                return True
+    #Otherwise...
+    return False
+
+
 
 
 #Initialise
@@ -64,6 +101,8 @@ while gameOver==False:
         print("======Invalid input======")
     else:
         makeMove(position)
-        player = (player%2)+1 #Switch between (0,1) but scaled by 1 so switch between (1,2)
         if hasWon()==True:
             gameOver=True
+            print("Player "+player+" has won!")
+        player = (player%2)+1 #Switch between (0,1) but scaled by 1 so switch between (1,2)
+
