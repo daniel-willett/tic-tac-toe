@@ -15,20 +15,23 @@ def button_click(btnNum):
               }
     temp = btnLookup[btnNum]
     temp.config(text="X")
+    
 
 root = tk.Tk()
 root.title("Tic Tac Toe")
 
+btn_opts = {"width":4, "height":2, "font":("Arial", 36)}
+
 #Create 9 buttons
-button00 = tk.Button(root, command=lambda: button_click("00"))
-button01 = tk.Button(root, command=lambda: button_click("01"))
-button02 = tk.Button(root, command=lambda: button_click("02"))
-button10 = tk.Button(root, command=lambda: button_click("10"))
-button11 = tk.Button(root, command=lambda: button_click("11"))
-button12 = tk.Button(root, command=lambda: button_click("12"))
-button20 = tk.Button(root, command=lambda: button_click("20"))
-button21 = tk.Button(root, command=lambda: button_click("21"))
-button22 = tk.Button(root, command=lambda: button_click("22"))
+button00 = tk.Button(root, **btn_opts, command=lambda: button_click("00"))
+button01 = tk.Button(root, **btn_opts, command=lambda: button_click("01"))
+button02 = tk.Button(root, **btn_opts, command=lambda: button_click("02"))
+button10 = tk.Button(root, **btn_opts, command=lambda: button_click("10"))
+button11 = tk.Button(root, **btn_opts, command=lambda: button_click("11"))
+button12 = tk.Button(root, **btn_opts, command=lambda: button_click("12"))
+button20 = tk.Button(root, **btn_opts, command=lambda: button_click("20"))
+button21 = tk.Button(root, **btn_opts, command=lambda: button_click("21"))
+button22 = tk.Button(root, **btn_opts, command=lambda: button_click("22"))
 
 button00.grid(row=0, column=0)
 button01.grid(row=1, column=0)
