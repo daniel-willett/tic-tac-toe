@@ -49,6 +49,7 @@ def hasWon():
 
 def button_click(btnNum):
     global player
+    global movesMade
     global gameOver
     if gameOver==False:
 
@@ -75,36 +76,22 @@ def button_click(btnNum):
             grid[y][x] = player
 
         player = (player%2)+1
+        movesMade += 1
         if hasWon()==True:
             gameOver=True
             print("Player "+str(playChar[player])+" has won!")
+        if movesMade==9:
+            gameOver=True
+            print("Draw")
     else:
         pass
 
 
 gameOver = False
+movesMade = 0
 player = 1
 grid = []
 setup()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 root = tk.Tk()
 root.title("Tic Tac Toe")
