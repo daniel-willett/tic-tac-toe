@@ -103,8 +103,7 @@ while gameOver==False:
         makeMove(position)
 
         movesMade += 1
-        player = (player%2)+1 #Switch between (0,1) but scaled by 1 so switch between (1,2)
-
+        
         if movesMade==9:
             gameOver=True
             print("Draw")
@@ -113,4 +112,6 @@ while gameOver==False:
             gameOver=True
             print("Player "+str(player)+" has won!")
             display()
-        
+       
+        player = (player%2)+1 #Switch between (0,1) but scaled by 1 so switch between (1,2)
+

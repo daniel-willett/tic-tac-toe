@@ -75,14 +75,18 @@ def button_click(btnNum):
             temp.config(text=playChar[player])
             grid[y][x] = player
 
-        player = (player%2)+1
         movesMade += 1
+        
         if hasWon()==True:
             gameOver=True
             print("Player "+str(playChar[player])+" has won!")
         if movesMade==9:
             gameOver=True
             print("Draw")
+        
+        player = (player%2)+1
+ 
+
     else:
         pass
 
