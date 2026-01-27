@@ -88,6 +88,7 @@ grid = []
    A  B  C
 """
 gameOver = False
+movesMade = 0
 player = 1
 
 setup()
@@ -100,9 +101,16 @@ while gameOver==False:
         print("======Invalid input======")
     else:
         makeMove(position)
+
+        movesMade += 1
+        player = (player%2)+1 #Switch between (0,1) but scaled by 1 so switch between (1,2)
+
+        if movesMade==9:
+            gameOver=True
+            print("Draw")
+            display()
         if hasWon()==True:
             gameOver=True
             print("Player "+str(player)+" has won!")
             display()
-        player = (player%2)+1 #Switch between (0,1) but scaled by 1 so switch between (1,2)
-
+        
