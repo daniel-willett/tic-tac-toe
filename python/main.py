@@ -80,7 +80,7 @@ def button_click(btnNum):
         if hasWon()==True:
             gameOver=True
             print("Player "+str(playChar[player])+" has won!")
-        if movesMade==9:
+        elif movesMade==9:
             gameOver=True
             print("Draw")
         
